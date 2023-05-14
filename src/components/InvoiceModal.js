@@ -39,6 +39,7 @@ class InvoiceModal extends React.Component {
       taxAmount,
       discountAmount
     } = this.props;
+    //changes
 
     return (
       <div>
