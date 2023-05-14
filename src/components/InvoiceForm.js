@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addInvoice, editInvoice, deleteInvoice } from './invoiceActions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -245,4 +247,20 @@ class InvoiceForm extends React.Component {
   }
 }
 
-export default InvoiceForm;
+const mapStateToProps = (state) => {
+  return {
+    invoices: state.invoices,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addInvoice: (invoice) => dispatch(addInvoice(invoice)),
+    editInvoice: (invoice) => dispatch(editInvoice(invoice)),
+    deleteInvoice: (invoiceId) => dispatch(deleteInvoice(invoiceId)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InvoiceForm);
+
+
